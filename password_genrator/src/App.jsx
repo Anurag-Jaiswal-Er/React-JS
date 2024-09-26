@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 function App() {
   const [length, setLength] = useState(8);
@@ -6,6 +6,8 @@ function App() {
   const [charallow, setCharallow] = useState(false);
   const [password, setPassword] = useState("");
 
+  // useref hook
+  const passwordef = useRef(null); // intial mai value null h hme kisi ka bhi refecence ni chahiye start mai
   // password generator banayenge ab
   const PasswordGenerator = useCallback(() => {
     let pass = "";
@@ -18,8 +20,18 @@ function App() {
     }
 
     setPassword(pass);
-  }, [length, numallow, charallow, setPassword]); // []=> dependency
+  }, [length, numallow, charallow, setPassword]);
+
+  const copyPasswordToClipboard = useCallback(() => {
+    passwordef.current?.select();
+    passwordef.current?.setSelectionRange(0, 20);
+    // window ke andar navigator hota h uske andar clipboard hota h phir useke andar writeText hota h
+    window.navigator.clipboard.writeText(password);
+  }, [password]); // ye optimzation ke liye h yeha copy kewal password pe hi depend h jysai password change hoga humar copy clipboard bhi change ho jayega
+
+  // []=> dependency
   // without setPassword ke bhi run ho jata pr setPassword ke code optimize ho gya because hum usecallback() use kiye h optimization ke liye ye value ko cache mai rkhta h
+
   useEffect(() => {
     // bina use effect ke hum passwordGenerator function ko run krete to wo error de raha tha
     PasswordGenerator();
@@ -30,6 +42,10 @@ function App() {
         <h1 className=" mb-3 text-3xl text-center text-white">
           Password Genretor
         </h1>
+        <br />
+        <p className="mb-3 text-lg text-center text-white">
+          Copy maximum lenght of Password is 20
+        </p>
         <div className="flex shadow rounded-lg overflow-hidden mb-4">
           <input
             type="text"
@@ -37,8 +53,12 @@ function App() {
             className="outline-none w-full py-1 px-3"
             placeholder="password"
             readOnly
+            ref={passwordef}
           />
-          <button className=" rounded-sm outline-none bg-blue-700 text-white px-3 py-0.5 shrink-0 ">
+          <button
+            onClick={copyPasswordToClipboard}
+            className=" rounded-sm outline-none hover:bg-violet-600  bg-blue-700 text-white px-3 py-0.5 shrink-0 "
+          >
             copy
           </button>
         </div>
