@@ -14,12 +14,21 @@
 ## Best react hooks
 - useState() 
 
-const [val , setval] = useState('intialvalue')
+ - const [val , setval] = useState('intialvalue')
 
-val is a variable setval is a function
+ - val is a variable setval is a function
 
 - useCallback() is a React Hook that lets you cache a function definition between re-renders.
-- useCallback(fn, dependencies) 
+- useCallback(fn, dependencies)
+
+- useEffect()  is a React Hook that lets you synchronize a component with an external system.
+- useEffect(setup, dependencies?)
+- useEffect(() => {
+    PasswordGenerator();
+  }, [length, numallow, charallow, PasswordGenerator]);
+
+  - useRef() useRef is a React Hook that lets you reference a value that’s not needed for rendering.
+  - const ref = useRef(initialValue)
 
 
 
