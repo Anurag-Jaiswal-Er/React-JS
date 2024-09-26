@@ -18,4 +18,9 @@ const [val , setval] = useState('intialvalue')
 
 val is a variable setval is a function
 
--
+
+
+
+
+## For random coponents 
+- use Devui because here devlopment components ara aviable to enhance you development experience
