@@ -18,9 +18,16 @@ const [val , setval] = useState('intialvalue')
 
 val is a variable setval is a function
 
+- useCallback() is a React Hook that lets you cache a function definition between re-renders.
+- useCallback(fn, dependencies) 
+
+
+
 
 
 
 
 ## For random coponents 
 - use Devui because here devlopment components ara aviable to enhance you development experience
+
+
