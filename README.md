@@ -10,3 +10,12 @@
 - Project name: ... vitereact
 - √ Select a framework: » React
 - √ Select a variant: » JavaScript
+
+## Best react hooks
+- useState() 
+
+const [val , setval] = useState('intialvalue')
+
+val is a variable setval is a function
+
+-
