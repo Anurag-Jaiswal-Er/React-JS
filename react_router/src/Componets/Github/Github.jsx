@@ -1,25 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 function Github() {
-  return (
-    <div className="py-20 bg-white">
-      <div className="space-y-6 md:space-y-0 md:flex md:gap-6 lg:items-center lg:gap-12">
-        <div className="md:5/12 lg:w-5/12">
-          <img
-            src="https://images.pexels.com/photos/1181253/pexels-photo-1181253.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-            alt="github"
-          />
-        </div>
-        <div className="md:7/12 lg:w-6/12">
-          <h2 className="text-2xl text-gray-900 font-bold md:text-4xl">
-            Access My Github Acount Click the below link
-          </h2>
+  const [data, setData] = useState([]);
 
-          <h2 className="text-center text-xl text-gray-800 font-serif py-16">
-            <a href="https://github.com/Anurag-Jaiswal-Er">Anurag Jiswal</a>
-          </h2>
-        </div>
-      </div>
+  useEffect(() => {
+    fetch("https://api.github.com/users/Anurag-Jaiswal-Er")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setData(data);
+      });
+  }, []);
+  return (
+    <div className="text-center m-4 bg-gray-700 text-white p-4 text-3xl ">
+      Github followers : {data.followers}
+      <img src={data.avatar_url} alt="" class=" h-40 w-50 rounded-full" />
     </div>
   );
 }
