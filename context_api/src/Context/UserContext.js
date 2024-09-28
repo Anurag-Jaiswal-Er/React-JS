@@ -1,5 +1,5 @@
 import React from "react";
-
+// context ko aap ek global variable hi mano
 const UserContext = React.createContext(); // ban gya create context bs yehi h context
 
 // ab isko hum export kr lete h
