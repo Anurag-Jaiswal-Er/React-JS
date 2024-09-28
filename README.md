@@ -40,3 +40,14 @@
 - use Devui because here devlopment components ara aviable to enhance you development experience
 
 
+``` javascript 
+ code likhne ka trika 
+
+ ```
+
+ ### a tag isliye use ni krte h react mai kyoki wo refresh hota h click krne mai hum react mai link use krte h wo refresh ni hota h click krne mai
+
+ # React Router DOM
+
+ ## Outlet
+ - An <Outlet> should be used in parent route elements to render their child route elements. This allows nested UI to show up when child routes are rendered. If the parent route matched exactly, it will render a child index route or nothing if there is no index route.
